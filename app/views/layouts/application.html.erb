@@ -1,15 +1,35 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>HardHat</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-<%= yield %>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-</body>
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <% javascript_include_tag "vendor/modernizr" %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body>
+  <% if notice %>
+    <div data-alert class="alert-box warning fixed">
+      <%= notice %>
+      <a href="#" class="close">&times;</a>
+    </div>
+  <% end %>
+  <% if alert %>
+    <div data-alert class="alert-box warning fixed">
+      <%= alert %>
+      <a href="#" class="close">&times;</a>
+    </div>
+  <% end %>
+
+    <%= yield %>
+
+  </body>
 </html>
